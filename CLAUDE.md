@@ -1,5 +1,7 @@
 @AGENTS.md
 
+Open work is tracked in `TODO.md`.
+
 ## Renaming or moving the GitHub repo
 
 The repo is currently `ninoschelcher/oradoro`. If its name or owner changes:
