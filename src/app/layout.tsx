@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ideal Disco",
-    template: "%s | Ideal Disco",
+    default: "Oradoro",
+    template: "%s | Oradoro",
   },
   description: "A Next.js site with Keystatic, ready for Cloudflare.",
 };

@@ -1,4 +1,4 @@
-# Ideal Disco
+# Oradoro
 
 Next.js, React, Tailwind CSS, and Keystatic CMS, deployed to Cloudflare Workers via [OpenNext](https://opennext.js.org/cloudflare).
 
@@ -31,7 +31,7 @@ All pages are prerendered at build time and served read-only from Workers static
 
 ## Cloudflare
 
-Create a **Worker** (not a Pages project) from this repo: Workers & Pages → Create → Workers → Import a repository. Name it `ideal-disco` to match `wrangler.jsonc`.
+Create a **Worker** (not a Pages project) from this repo: Workers & Pages → Create → Workers → Import a repository. Name it `oradoro` to match `wrangler.jsonc`.
 
 | Setting                      | Value                              |
 | ---------------------------- | ---------------------------------- |
