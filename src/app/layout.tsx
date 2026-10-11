@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     template: "%s | Oradoro",
   },
   description: "A Next.js site with Keystatic, ready for Cloudflare.",
+  // Keep the site out of search engines until it launches. Remove this to
+  // allow indexing.
+  robots: { index: false, follow: false },
 };
 
 // Kept bare on purpose: site styles live in (site)/layout.tsx so they don't
