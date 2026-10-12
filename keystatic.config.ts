@@ -1,5 +1,7 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
+import { sections } from "./src/keystatic/sections";
+
 function getStorage() {
   const repo = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO;
 
@@ -38,6 +40,7 @@ export default config({
           label: "Description",
           multiline: true,
         }),
+        sections,
         content: markdocContent,
       },
     }),
@@ -54,6 +57,7 @@ export default config({
           label: "Description",
           multiline: true,
         }),
+        sections,
         content: markdocContent,
       },
     }),

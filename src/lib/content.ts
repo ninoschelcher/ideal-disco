@@ -1,10 +1,26 @@
-import Markdoc, { type Node } from "@markdoc/markdoc";
+import Markdoc, { type Node, type RenderableTreeNode } from "@markdoc/markdoc";
 import { createReader } from "@keystatic/core/reader";
 
 import keystaticConfig from "../../keystatic.config";
 
 function getReader() {
   return createReader(process.cwd(), keystaticConfig);
+}
+
+type Home = Awaited<
+  ReturnType<ReturnType<typeof getReader>["singletons"]["home"]["readOrThrow"]>
+>;
+
+export type SectionBlock = Home["sections"][number];
+
+/** True when Markdoc content rendered to nothing (an empty editor). */
+export function isEmptyContent(content: RenderableTreeNode) {
+  return (
+    Markdoc.Tag.isTag(content) &&
+    content.children.every(
+      (child) => typeof child === "string" && child.trim() === "",
+    )
+  );
 }
 
 async function renderContent(content: () => Promise<{ node: unknown }>) {
@@ -27,6 +43,7 @@ export async function getHome() {
   return {
     title: home.title,
     description: home.description,
+    sections: home.sections,
     content: await renderContent(home.content),
   };
 }
@@ -53,6 +70,7 @@ export async function getPage(slug: string) {
   return {
     title: page.title,
     description: page.description,
+    sections: page.sections,
     content: await renderContent(page.content),
   };
 }

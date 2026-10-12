@@ -1,11 +1,11 @@
 import Markdoc, { type RenderableTreeNode } from "@markdoc/markdoc";
 import React from "react";
 
-type MarkdocContentProps = {
+type RichTextProps = {
   content: RenderableTreeNode;
 };
 
-export function MarkdocContent({ content }: MarkdocContentProps) {
+export function RichText({ content }: RichTextProps) {
   return (
     <div className="content">{Markdoc.renderers.react(content, React)}</div>
   );

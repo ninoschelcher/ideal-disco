@@ -1,18 +1,19 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 
 // Unmatched URLs render under the bare root layout, so pull in site styles here.
 import "./globals.css";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex min-h-screen antialiased w-full max-w-3xl flex-col justify-center px-6 py-24">
-      <h1 className="text-3xl font-semibold tracking-tight">Page not found</h1>
-      <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-        That route is not in the Keystatic pages collection.
+    <div className="mx-auto flex min-h-screen w-full max-w-site flex-col items-start justify-center gap-5 px-5 py-24 antialiased md:px-6">
+      <p className="text-eyebrow text-terracotta">404</p>
+      <h1 className="text-display-2">Deze pagina bestaat niet</h1>
+      <p className="text-ink-soft">
+        Misschien is de pagina verplaatst of is de link niet helemaal goed.
       </p>
-      <Link href="/" className="mt-8 underline underline-offset-4">
-        Back home
-      </Link>
+      <ButtonLink href="/" className="mt-3">
+        Terug naar home
+      </ButtonLink>
     </div>
   );
 }
