@@ -2,8 +2,10 @@ import type { ComponentProps } from "react";
 
 import { cx } from "@/lib/cx";
 
+// min-w-0 + appearance-none: iOS Safari gives date inputs an intrinsic min-width
+// that ignores w-full and overflows narrow screens.
 const control =
-  "w-full rounded-field border border-field-border bg-field px-4 text-ink placeholder:text-ink-muted focus-visible:border-terracotta";
+  "block w-full min-w-0 appearance-none rounded-field border border-field-border bg-field px-4 text-ink placeholder:text-ink-muted focus-visible:border-terracotta [&::-webkit-date-and-time-value]:text-left";
 
 type FieldProps = { label: string; id: string };
 
@@ -14,7 +16,7 @@ export function Field({
   ...props
 }: FieldProps & ComponentProps<"input">) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex min-w-0 flex-col gap-1.5">
       <label htmlFor={id} className="text-[0.9375rem] font-semibold">
         {label}
       </label>
@@ -31,7 +33,7 @@ export function TextareaField({
   ...props
 }: FieldProps & ComponentProps<"textarea">) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex min-w-0 flex-col gap-1.5">
       <label htmlFor={id} className="text-[0.9375rem] font-semibold">
         {label}
       </label>

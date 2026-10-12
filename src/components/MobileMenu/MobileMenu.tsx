@@ -1,12 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
-type NavLink = { href: string; label: string };
+import { type Cta, CtaButton } from "@/components/CtaButton";
+import { NavLink } from "@/components/NavLink";
 
-export function MobileMenu({ links }: { links: NavLink[] }) {
+type MobileMenuProps = {
+  links: readonly Cta[];
+  cta: Cta;
+};
+
+export function MobileMenu({ links, cta }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
     <div className="md:hidden">
@@ -41,16 +47,20 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
           aria-label="Hoofdmenu"
           className="absolute inset-x-0 top-full z-10 flex flex-col border-b border-line bg-cream-soft px-5 pt-2 pb-6"
         >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="flex min-h-13 items-center border-b border-line font-display text-[1.625rem] text-ink no-underline last:border-b-0"
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="flex flex-col">
+            {links.map((link) => (
+              <NavLink
+                key={link.href}
+                href={link.href}
+                onClick={close}
+                className="flex min-h-13 items-center border-b border-line font-display text-[1.625rem] text-ink no-underline last:border-b-0"
+                activeClassName="text-terracotta"
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
+          <CtaButton link={cta} onClick={close} className="mt-4" />
         </nav>
       ) : null}
     </div>

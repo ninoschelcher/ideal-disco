@@ -44,8 +44,20 @@ export async function getHome() {
     title: home.title,
     description: home.description,
     sections: home.sections,
-    content: await renderContent(home.content),
+    seo: home.seo,
   };
+}
+
+export async function getHeader() {
+  const reader = getReader();
+
+  return reader.singletons.header.readOrThrow();
+}
+
+export async function getFooter() {
+  const reader = getReader();
+
+  return reader.singletons.footer.readOrThrow();
 }
 
 export async function getPages() {
@@ -72,5 +84,6 @@ export async function getPage(slug: string) {
     description: page.description,
     sections: page.sections,
     content: await renderContent(page.content),
+    seo: page.seo,
   };
 }

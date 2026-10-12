@@ -25,8 +25,10 @@ export function ContactSection({
           className="mt-3 w-full max-w-[26.25rem] max-md:hidden"
         />
       </div>
-      {/* TODO: post to a real form handler instead of mailto (see TODO.md). */}
-      {email ? <ContactForm action={`mailto:${email}`} /> : null}
+      <ContactForm
+        accessKey={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
+        email={email}
+      />
     </div>
   );
 }

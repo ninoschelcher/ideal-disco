@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getPage, getPages } from "@/lib/content";
+import { cmsMetadata } from "@/lib/metadata";
 import { PageBody } from "@/sections/PageBody";
 
 export const dynamicParams = false;
@@ -33,8 +34,5 @@ export async function generateMetadata({
     return { title: "Not found" };
   }
 
-  return {
-    title: page.title,
-    description: page.description,
-  };
+  return cmsMetadata(page);
 }

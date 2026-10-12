@@ -1,6 +1,9 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
+import { footer } from "./src/keystatic/footer";
+import { header } from "./src/keystatic/header";
 import { sections } from "./src/keystatic/sections";
+import { seo } from "./src/keystatic/seo";
 
 function getStorage() {
   const repo = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO;
@@ -16,6 +19,7 @@ function getStorage() {
     repo: { owner: owner ?? "", name: name ?? "" },
   };
 }
+
 
 const markdocContent = fields.markdoc({
   label: "Content",
@@ -33,17 +37,22 @@ export default config({
     home: singleton({
       label: "Home",
       path: "content/home",
-      format: { contentField: "content" },
+      // Home is built from sections only, so it's stored as content/home.yaml.
       schema: {
-        title: fields.text({ label: "Title" }),
+        title: fields.text({
+          label: "Titel",
+          validation: { isRequired: true },
+        }),
         description: fields.text({
-          label: "Description",
+          label: "Omschrijving",
           multiline: true,
         }),
         sections,
-        content: markdocContent,
+        seo,
       },
     }),
+    header,
+    footer,
   },
   collections: {
     pages: collection({
@@ -59,6 +68,7 @@ export default config({
         }),
         sections,
         content: markdocContent,
+        seo,
       },
     }),
   },

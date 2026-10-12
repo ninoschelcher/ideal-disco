@@ -1,0 +1,14 @@
+links:
+  - label: Wat is een doula
+    href: /#features
+  - label: Begeleiding
+    href: /#steps
+  - label: Tarieven
+    href: /#pricing
+  - label: Over mij
+    href: /over-mij
+  - label: Vragen
+    href: /#faq
+cta:
+  label: Kennismaken
+  href: /#contact

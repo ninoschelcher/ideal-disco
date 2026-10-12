@@ -14,7 +14,7 @@ npm run dev
 
 Locally, Keystatic writes Markdoc files to `content/`:
 
-- `content/home.mdoc` is the **Home** singleton, rendered at `/`.
+- `content/home.yaml` is the **Home** singleton, rendered at `/`. It is built from sections only.
 - `content/pages/*.mdoc` is the **Pages** collection; each entry becomes a route at `/{slug}`.
 
 To check the site on the Workers runtime before deploying (`next dev` runs on Node and won't catch Workers-only issues):
@@ -53,7 +53,7 @@ npm run deploy
 Without any variables, the site builds from the committed `content/` files and the CMS only works locally. To edit content on the live site, switch Keystatic to GitHub mode:
 
 1. Set `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=owner/repo` in your local `.env` (see `.env.example`), run `npm run dev`, open `/keystatic` and follow the prompts to create the GitHub App. This writes the remaining values to `.env`.
-2. In Cloudflare, add `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` and `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` as **build variables** (they're inlined at build time).
+2. In Cloudflare, add `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` and `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (the contact form) as **build variables** (they're inlined at build time).
 3. Add `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET` and `KEYSTATIC_SECRET` as **Worker secrets** (Settings → Variables and Secrets).
 4. Add `https://<your-domain>/api/keystatic/github/oauth/callback` as a callback URL in the GitHub App settings.
 

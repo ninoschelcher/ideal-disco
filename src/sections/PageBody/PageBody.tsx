@@ -11,7 +11,8 @@ type PageBodyProps = {
   title: string;
   description: string;
   sections: readonly SectionBlock[];
-  content: RenderableTreeNode;
+  /** Rich text after the sections (pages only; Home is sections-only). */
+  content?: RenderableTreeNode;
 };
 
 /**
@@ -30,7 +31,7 @@ export function PageBody({ title, description, sections, content }: PageBodyProp
         </Band>
       )}
       <Sections sections={sections} />
-      {isEmptyContent(content) ? null : (
+      {!content || isEmptyContent(content) ? null : (
         <Band tone={bands % 2 === 0 ? "soft" : "cream"}>
           <RichText content={content} />
         </Band>
